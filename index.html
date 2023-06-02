@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.texto-lateral {
+  color: white;
+  padding: 20px;
+  font-size: 10px;
+  margin-left: 200px;
+  margin-top: -1;
+}
+
+body{
+  background-color: black;
+}
+.banner {
+  width: 320px;
+  height: 100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.banner img {
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 25%;
+  border-radius: 10px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: -1%;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+.selected {
+  margin-right: 5px;
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #666 transparent transparent transparent;
+  margin-left: 5px;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  margin-top: 5px;
+  padding: 0;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  list-style-type: none;
+}
+
+.menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background-color: #ddd;
+}
+
+.menu li:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.menu li:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.dropdown:hover .menu {
+  display: block;
+}
+
+.selected-button {
+  background-color: #ccc;
+}
+
+.paragrafo {
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+</style>
+<script>
+var menuTimeout;
+
+function showMenu() {
+  clearTimeout(menuTimeout);
+  var menu = document.querySelector('.menu');
+  menu.style.display = 'block';
+}
+
+function hideMenu() {
+  menuTimeout = setTimeout(function() {
+    var menu = document.querySelector('.menu');
+    menu.style.display = 'none';
+  }, 500);
+}
+
+function showParagraph(paragraphId) {
+  var paragraphs = document.getElementsByClassName("paragrafo");
+  for (var i = 0; i < paragraphs.length; i++) {
+    paragraphs[i].style.display = "none";
+  }
+  var paragraph = document.getElementById(paragraphId);
+  paragraph.style.display = "block";
+}
+
+function selectButton(button) {
+  var buttons = document.getElementsByClassName("select");
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("selected-button");
+  }
+  button.classList.add("selected-button");
+}
+</script>
+</head>
+  <meta charset="UTF-8">
+  <title>poketa</title>
+<body>
+  <div class="banner">
+    <img src="https://64.media.tumblr.com/be68a75d4f5713e62cfa1290ba432db6/0cd21491be99ac49-3c/s540x810/062aff908d5e12edfe9c939d856cadebcaae372a.jpg" alt="Image" />
+  </div>
+  <div class="texto-lateral">
+    <h1>Gabriel Luis</h1>
+    <h2>Estudante de Ciência da Computação na PUCPR - Curitiba</h2>
+  </div>
+  <div class="dropdown">
+    <div class="select" onmouseover="showMenu()" onmouseout="hideMenu()" onclick="selectButton(this)">
+      <span class="selected">Matérias</span>
+      <div class="caret"></div>
+    </div>
+    <ul class="menu" onmouseover="showMenu()" onmouseout="hideMenu()">
+      <li onclick="showParagraph('paragrafo1')">Filosofia</li>
+      <li onclick="showParagraph('paragrafo2')">Raciocínio Algoritmo</li>
+      <li onclick="showParagraph('paragrafo3')">Experiência Criativa</li>
+      <li onclick="showParagraph('paragrafo4')">Lógica Matemática</li>
+      <li onclick="showParagraph('paragrafo5')">Sistemas Ciberfísicos</li>
+    </ul>
+  </div>
+
+<p id="paragrafo1" class="paragrafo" style="display: none;">Estudamos a exploração do pensamento, sua essência e a sua utilidade no campo da filosofia, em uma análise de tópicos selecionados pelo professor.</p>
+<p id="paragrafo2" class="paragrafo" style="display: none;">Aprendemos a linguagem Python e exploramos seu potencial
+   no desenvolvimento de jogos, conseguimos fazer as estratégias do jogo Jokenpo, e tambem um simulador de megasena.
+</p>
+<p id="paragrafo3" class="paragrafo" style="display: none;">Exploramos diversos tipos de conteudo e aplicativos no decorrer da materia, contendo uma material bem didatico.</p>
+<p id="paragrafo4" class="paragrafo" style="display: none;">Apremos que lógica matemática e tabelas verdade é essencial para compreender a estrutura e as relações lógicas subjacentes aos problemas.</p>
+<p id="paragrafo5" class="paragrafo" style="display: none;">Aprendemos sobre o computador e seus componentes nos para entender como essa tecnologia funciona e como suas partes interagem entre si. Com esse conhecimento, podemos aplicar esses conceitos de diversas maneiras, explorando desde o desenvolvimento de softwares até a criação de soluções inovadoras em áreas como inteligência artificial e realidade virtual.</p>
+</body>
+</html>
